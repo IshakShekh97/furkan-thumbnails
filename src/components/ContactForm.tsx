@@ -1,8 +1,5 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,27 +7,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { AtSign, Send, Phone, Instagram, Loader2 } from "lucide-react"
 import Link from "next/link"
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function ContactForm() {
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-
-        // Simulate form submission
-        setTimeout(() => {
-            setIsSubmitting(false)
-            setIsSubmitted(true)
-
-            // Reset form after showing success message
-            setTimeout(() => {
-
-                setIsSubmitted(false)
-            }, 3000)
-        }, 1500)
-    }
+    const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_CONTACT_FORM_ID as string);
 
     return (
         <section id="contact" className="py-20 relative">
@@ -99,51 +79,65 @@ export default function ContactForm() {
                         </div>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <Label htmlFor="name">Name</Label>
-                                    <Input id="name" placeholder="Your name" required />
+
+                    {state.succeeded ? (
+                        <p className="flex h-full w-full items-center justify-center text-xl font-bold">
+                            {"Thanks for reaching out! I'll get back to you soon. 👍 "}
+                        </p>
+                    ) : (
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            viewport={{ once: true }}
+                        >
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="name">Name</Label>
+                                        <Input id="name" type="text" name="name" placeholder="Your name" required />
+                                        <ValidationError prefix="Name" field="name" errors={state.errors} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="email">Email</Label>
+                                        <Input id="email" name="email" type="email" placeholder="Your email" required />
+                                        <ValidationError prefix="Email" field="email" errors={state.errors} />
+                                    </div>
                                 </div>
+
                                 <div className="space-y-2">
-                                    <Label htmlFor="email">Email</Label>
-                                    <Input id="email" type="email" placeholder="Your email" required />
+                                    <Label htmlFor="subject">Subject</Label>
+                                    <Input id="subject" name="subject" type="text" placeholder="Project inquiry" required />
+                                    <ValidationError prefix="Subject" field="subject" errors={state.errors} />
                                 </div>
-                            </div>
 
-                            <div className="space-y-2">
-                                <Label htmlFor="subject">Subject</Label>
-                                <Input id="subject" placeholder="Project inquiry" required />
-                            </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="message">Message</Label>
+                                    <Textarea id="message" name="message" placeholder="Tell me about your project..." className="min-h-[150px]" required />
+                                    <ValidationError prefix="Message" field="message" errors={state.errors} />
+                                </div>
 
-                            <div className="space-y-2">
-                                <Label htmlFor="message">Message</Label>
-                                <Textarea id="message" placeholder="Tell me about your project..." className="min-h-[150px]" required />
-                            </div>
+                                <Button type="submit" className="w-full" disabled={state.submitting}>
+                                    {state.submitting ? (
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Sending...
+                                        </>
+                                    ) : state.succeeded ? (
+                                        "Message Sent!"
+                                    ) : (
+                                        <>
+                                            <Send className="mr-2 h-4 w-4" />
+                                            Send Message
+                                        </>
+                                    )}
+                                </Button>
+                            </form>
+                        </motion.div>
 
-                            <Button type="submit" className="w-full" disabled={isSubmitting || isSubmitted}>
-                                {isSubmitting ? (
-                                    <>
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        Sending...
-                                    </>
-                                ) : isSubmitted ? (
-                                    "Message Sent!"
-                                ) : (
-                                    <>
-                                        <Send className="mr-2 h-4 w-4" />
-                                        Send Message
-                                    </>
-                                )}
-                            </Button>
-                        </form>
-                    </motion.div>
+                    )}
+
+
                 </div>
             </div>
         </section>

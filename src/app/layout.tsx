@@ -14,9 +14,8 @@ export const metadata: Metadata = {
   description: "Portfolio showcasing graphic design, thumbnail creation, and digital artwork",
   icons: [
     {
-      href: '/logo.png',
-      url: '/logo.png',
-      pathname: '/logo.png',
+      url: "/logo.png",
+      href: "/logo.png",
     }
   ]
 };

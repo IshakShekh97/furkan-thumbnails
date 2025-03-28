@@ -49,12 +49,12 @@ export default function Hero() {
                             transition={{ duration: 0.8, delay: 0.9 }}
                             className="flex flex-wrap gap-4"
                         >
-                            <Button size="lg" className="rounded-full" asChild>
+                            <Button size="lg" className="rounded-full text-white bg-zinc-800" asChild>
                                 <Link href={'#work'}>
                                     View My Work
                                 </Link>
                             </Button>
-                            <Button size="lg" className="rounded-full border-lime-500 border bg-lime-300/20" asChild>
+                            <Button size="lg" className="rounded-full border-lime-500 border bg-lime-300/20 text-white" asChild>
                                 <Link href={'#contact'}>
                                     Contact Me
                                 </Link>

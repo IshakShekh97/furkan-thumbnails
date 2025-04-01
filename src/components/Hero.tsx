@@ -38,7 +38,7 @@ export default function Hero() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.7 }}
-                                className="mt-4 text-lg text-muted max-w-md"
+                                className="mt-4 text-lg  max-w-md text-zinc-400"
                             >
                                 {"Specialized in eye-catching thumbnails and graphics that drive engagement and tell your brand's story."}
                             </motion.p>

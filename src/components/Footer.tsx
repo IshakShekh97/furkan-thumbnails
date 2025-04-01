@@ -18,14 +18,14 @@ export default function Footer() {
                             Creating eye-catching designs and thumbnails that capture attention and drive engagement for your brand.
                         </p>
                         <div className="flex gap-4 mt-6">
-                            <Link href="#" className="text-zinc-800 hover:text-black transition-colors">
+                            <Link href="/https://www.instagram.com/furkan.thumbnails?igsh=ZjFmZjRycmZ0dzBt" target="_blank" className="text-zinc-800 hover:text-black transition-colors">
                                 <Instagram className="h-5 w-5" />
                             </Link>
                         </div>
                     </div>
 
                     <div>
-                        <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+                        <h3 className="font-semibold text-lg mb-4 text-black">Quick Links</h3>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="#home" className="text-zinc-800 hover:text-black transition-colors">
@@ -51,27 +51,27 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="font-semibold text-lg mb-4">Services</h3>
+                        <h3 className="font-semibold text-lg mb-4 text-black">Services</h3>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="#" className="text-zinc-800 hover:text-black transition-colors">
+                                <p className="text-zinc-800 hover:text-black transition-colors">
                                     Thumbnail Design
-                                </Link>
+                                </p>
                             </li>
                             <li>
-                                <Link href="#" className="text-zinc-800 hover:text-black transition-colors">
+                                <p className="text-zinc-800 hover:text-black transition-colors">
                                     Social Media Graphics
-                                </Link>
+                                </p>
                             </li>
                             <li>
-                                <Link href="#" className="text-zinc-800 hover:text-black transition-colors">
+                                <p className="text-zinc-800 hover:text-black transition-colors">
                                     Brand Identity
-                                </Link>
+                                </p>
                             </li>
                             <li>
-                                <Link href="#" className="text-zinc-800 hover:text-black transition-colors">
+                                <p className="text-zinc-800 hover:text-black transition-colors">
                                     UI/UX Design
-                                </Link>
+                                </p>
                             </li>
                         </ul>
                     </div>

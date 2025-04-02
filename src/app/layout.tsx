@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Recursive } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
 
-const recursive = Recursive({
-  weight: ["400", "500", "600", "700", "1000", "300", "800", "900"],
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700", "300", "800", "900", "100", "200", "300"],
   subsets: ["latin"],
 });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${recursive.className} antialiased bg-black text-white`}
+        className={`${poppins.className} antialiased bg-black text-white`}
       >
         <ThemeProvider
           attribute={'class'}

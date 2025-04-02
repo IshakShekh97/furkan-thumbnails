@@ -16,7 +16,7 @@ const Testimonials = async () => {
     const testimonials = await getTestimonials()
 
     return (
-        <>
+        <div className='mb-5' id='testimonials'>
             <div
                 className="text-center mb-12"
             >
@@ -28,8 +28,8 @@ const Testimonials = async () => {
                 </p>
             </div>
 
-            <TestimonialCarousel testimonials={testimonials} />;
-        </>
+            <TestimonialCarousel testimonials={testimonials} />
+        </div>
     )
 }
 

@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./dialog";
 
 
 export default function TestimonialCarousel(
@@ -66,7 +67,7 @@ export default function TestimonialCarousel(
                     {testimonials.map((testimonial) => (
                         <div key={testimonial.id} className="w-full flex-shrink-0 px-2 sm:px-4">
                             <div className="h-full">
-                                <div className="p-4 sm:p-6 flex flex-col items-center text-center relative  w-full h-[30rem] overflow-hidden">
+                                <div className="p-4 sm:p-6 flex flex-col items-center text-center relative  w-full h-[30rem] overflow-hidden group">
                                     <Image
                                         src={urlFor(testimonial.src).url()}
                                         alt={testimonial.name}
@@ -80,6 +81,30 @@ export default function TestimonialCarousel(
                                             {testimonial.name}
                                         </span>
                                     </p>
+
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button size={'lg'} className="hidden group-hover:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black  text-white rounded-full p-2 w-40 shadow-md transition duration-300 ease-in-out z-50">
+                                                View
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="bg-black text-white border-lime-500/50">
+                                            <DialogTitle>
+                                                {testimonial.name}
+                                            </DialogTitle>
+                                            <div className="flex flex-col items-center text-center">
+                                                <Image
+                                                    src={urlFor(testimonial.src).url()}
+                                                    alt={testimonial.name}
+                                                    width={500}
+                                                    height={500}
+                                                    className="h-full w-full rounded-lg object-cover object-center mb-4"
+                                                />
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+
+
                                 </div>
                             </div>
                         </div>

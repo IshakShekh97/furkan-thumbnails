@@ -3,11 +3,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 
 const navItems = [
     { name: "Home", href: "#home" },
     { name: "Work", href: "#work" },
-    { name: "About", href: "#about" },
+    { name: "Testomonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
 ]
 
@@ -28,18 +29,23 @@ export function Navbar() {
     }, [containerRef, isOpen]);
 
     return (
-        <div className="backdrop-blur-md bg-transparent border-b border-primary/20 py-2 px-3">
-            <div className="container flex h-14 items-center justify-between">
+        <div className="backdrop-blur-md bg-transparent border-b border-primary/20 py-2 px-10">
+            <div className="flex h-14 items-center justify-between container mx-auto">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="mr-4 flex items-center space-x-2"
+                    className=" flex items-center space-x-2"
                 >
                     <Link href="/" className="flex items-center space-x-2">
-                        <span className="text-white font-bold text-2xl">Furkan Thumbnails</span>
-                        <span className="inline-block w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                        <Image
+                            alt="log0"
+                            src={'/logo.png'}
+                            width={40}
+                            height={40}
+                            className="bg-lime-300 rounded-full p-1 animate-pulse"
+                        />
                     </Link>
                 </motion.div>
                 <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
@@ -56,6 +62,7 @@ export function Navbar() {
                         </motion.div>
                     ))}
                 </nav>
+
                 <div className=""></div>
                 <div className="md:hidden relative">
                     <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
@@ -83,7 +90,7 @@ export function Navbar() {
                                 <motion.nav
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="flex w-60 items-center space-y-6 text-sm font-medium flex-col bg-white/20 backdrop-blur-3xl rounded-lg shadow-lg p-4">
+                                    className="flex w-60 items-center space-y-6 text-sm font-medium flex-col bg-black border-lime-500 border-2 backdrop-blur-3xl rounded-lg shadow-lg p-4">
                                     {navItems.map((item, index) => (
                                         <motion.div
                                             key={item.href}
@@ -96,7 +103,6 @@ export function Navbar() {
                                             </Link>
                                         </motion.div>
                                     ))}
-                                    <Button className="w-full">Hire Me</Button>
                                 </motion.nav>
                             </div>
                         )

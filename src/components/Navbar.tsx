@@ -30,7 +30,7 @@ export function Navbar() {
 
     return (
         <div className="backdrop-blur-md bg-transparent border-b border-primary/20 py-2 px-10">
-            <div className="flex h-14 items-center justify-between container mx-auto">
+            <div className="flex min-h-14 items-center justify-between container mx-auto">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}

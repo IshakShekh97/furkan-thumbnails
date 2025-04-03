@@ -6,7 +6,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="border-t  bg-white py-12">
+        <footer className="border-t  bg-white pt-12 pb-5">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="md:col-span-2">
@@ -77,16 +77,14 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-primary/10 mt-10 pt-6 flex flex-col md:flex-row justify-center items-center">
+                <div className="border-t border-primary/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-center">
                     <p className="text-zinc-800 text-sm">© {currentYear} Furkan Thumbnails Portfolio. All rights reserved.</p>
-                    {/* <div className="flex gap-6 mt-4 md:mt-0">
-                        <Link href="#" className="text-sm text-zinc-800 hover:text-black transition-colors">
-                            Privacy Policy
+                    <p className="text-black">
+                        Developed By
+                        <Link className="font-black underline underline-offset-2" href={'https://github.com/IshakShekh97'}>
+                            @Ishak
                         </Link>
-                        <Link href="#" className="text-sm text-zinc-800 hover:text-black transition-colors">
-                            Terms of Service
-                        </Link>
-                    </div> */}
+                    </p>
                 </div>
             </div>
         </footer>

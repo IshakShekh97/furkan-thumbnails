@@ -44,7 +44,7 @@ export function Navbar() {
                             src={'/logo.png'}
                             width={40}
                             height={40}
-                            className="bg-lime-300 rounded-full p-1 animate-pulse"
+                            className="bg-lime-300 rounded-full p-1"
                         />
                     </Link>
                 </motion.div>

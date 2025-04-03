@@ -4,6 +4,7 @@ import { urlFor } from "@/sanity/lib/image"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import Marquee from "react-fast-marquee"
+import { motion } from "framer-motion"
 
 
 
@@ -48,6 +49,22 @@ export default function ScrollingGallery() {
 
     return (
         <div className="min-h-screen  text-white">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
+            >
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    My Creative <span className="text-lime-400">Work</span>
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                    Browse through my portfolio of design work across different categories
+                </p>
+            </motion.div>
+
+
             {isLoading ? (
                 <div className="flex justify-center items-center py-20">
                     <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
@@ -81,7 +98,7 @@ function CategorySection({ category, direction }: CategorySectionProps) {
 
     return (
         <section className="py-6 md:py-8" id="work">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 md:mb-6 text-center" style={{ color: "#5cff00" }}>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center" style={{ color: "#5cff00" }}>
                 {category.title}
             </h2>
 

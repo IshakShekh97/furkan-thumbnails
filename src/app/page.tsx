@@ -13,7 +13,6 @@ export default function Home() {
       </div>
       <div className="min-h-screen overflow-x-hidden">
         <Hero />
-        {/* <Categories /> */}
         <ScrollingGallery />
         <Testimonials />
         <ContactForm />

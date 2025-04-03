@@ -30,7 +30,7 @@ export default function Hero() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="text-4xl md:text-6xl font-extrabold leading-tight"
+                                className="text-4xl md:text-6xl font-semibold leading-tight"
                             >
                                 Creating <span className="text-lime-400">Visual</span> Stories That Capture Attention
                             </motion.h1>
@@ -38,9 +38,10 @@ export default function Hero() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.7 }}
-                                className="mt-4 text-lg  max-w-md text-zinc-400"
+                                className="mt-4 text-lg  max-w-xl text-zinc-400 text-pretty"
                             >
-                                {"Specialized in eye-catching thumbnails and graphics that drive engagement and tell your brand's story."}
+                                {/* {"Specialized in eye-catching thumbnails and graphics that drive engagement and tell your brand's story."} */}
+                                With 5 years of Photoshop experience, we create high-quality thumbnails, posters, and branding visuals that boost engagement and enhance content
                             </motion.p>
                         </div>
                         <motion.div

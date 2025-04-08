@@ -63,16 +63,6 @@ export default function Footer() {
                                     Social Media Graphics
                                 </p>
                             </li>
-                            <li>
-                                <p className="text-zinc-800 hover:text-black transition-colors">
-                                    Brand Identity
-                                </p>
-                            </li>
-                            <li>
-                                <p className="text-zinc-800 hover:text-black transition-colors">
-                                    UI/UX Design
-                                </p>
-                            </li>
                         </ul>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "300", "800", "900", "100", "200", "300"],
@@ -14,8 +15,8 @@ export const metadata: Metadata = {
   description: "Portfolio showcasing graphic design, thumbnail creation, and digital artwork",
   icons: [
     {
-      url: "/logo.svg",
-      href: "/logo.svg",
+      url: "/logo.jpg",
+      href: "/logo.jpg",
     }
   ]
 };
@@ -46,7 +47,9 @@ export default function RootLayout({
             />
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center  [mask-image:radial-gradient(ellipse_at_center,transparent_35%,#00ff00)] bg-[#91db00]/10"></div>
             <div className="relative z-20">
+              <SmoothScroll>
               {children}
+              </SmoothScroll>
             </div>
           </div>
         </ThemeProvider>

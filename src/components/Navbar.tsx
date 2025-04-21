@@ -40,11 +40,11 @@ export function Navbar() {
                 >
                     <Link href="/" className="flex items-center space-x-2">
                         <Image
-                            alt="log0"
-                            src={'/logo.png'}
+                            alt="logo"
+                            src={'/logo.jpg'}
                             width={40}
                             height={40}
-                            className="bg-lime-300 rounded-full p-1"
+                            className="rounded-full"
                         />
                     </Link>
                 </motion.div>

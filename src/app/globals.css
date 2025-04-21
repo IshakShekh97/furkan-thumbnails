@@ -119,6 +119,8 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Add overflow-x-hidden to prevent horizontal scrollbars caused by fixed positioning */
+    @apply overflow-x-hidden;
   }
 }
 

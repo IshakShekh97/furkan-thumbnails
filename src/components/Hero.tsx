@@ -70,7 +70,8 @@ export default function Hero() {
                     >
                         <div className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-2xl border border-primary/20 shadow-lime-400/20 shadow-xl">
                             <Image
-                                src="/profile.jpg"
+                                // src="/profile.jpg"
+                                src="/cover.jpg"
                                 alt="Designer Profile"
                                 width={500}
                                 height={500}

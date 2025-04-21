@@ -5,8 +5,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import Marquee from "react-fast-marquee"
 import { motion } from "framer-motion"
-
-
+import { ChevronLeft, ChevronRight } from "lucide-react" // Import icons
 
 type categoryType = {
     id: string
@@ -56,7 +55,7 @@ export default function ScrollingGallery() {
                 viewport={{ once: true }}
                 className="text-center mb-12"
             >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 mt-10">
                     My Creative <span className="text-lime-400">Work</span>
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -64,15 +63,13 @@ export default function ScrollingGallery() {
                 </p>
             </motion.div>
 
-
             {isLoading ? (
                 <div className="flex justify-center items-center py-20">
                     <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : (
                 <>
-                    {
-                        categoryData?.map((category, index) => (
+                        {categoryData?.map((category, index) => (
                             <CategorySection key={category.id} category={category} direction={index % 2 === 0 ? "left" : "right"} />
                         ))}
                 </>
@@ -86,7 +83,9 @@ interface CategorySectionProps {
     direction: "left" | "right"
 }
 
-function CategorySection({ category, direction }: CategorySectionProps) {
+function CategorySection({ category, direction: initialDirection }: CategorySectionProps) {
+    const [currentDirection, setCurrentDirection] = useState<"left" | "right">(initialDirection)
+
     // Ensure we have at least 5 items for a good scrolling effect
     const galleryItems =
         category.gallary.length < 5
@@ -96,8 +95,13 @@ function CategorySection({ category, direction }: CategorySectionProps) {
             )
             : category.gallary
 
+    const handleDirectionChange = (newDirection: "left" | "right") => {
+        setCurrentDirection(newDirection)
+    }
+
     return (
-        <section className="py-6 md:py-8" id="work">
+        <section className="py-6 md:py-8 relative" id="work">
+            {/* Added relative positioning */}
             <h2 className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center" style={{ color: "#5cff00" }}>
                 {category.title}
             </h2>
@@ -106,7 +110,7 @@ function CategorySection({ category, direction }: CategorySectionProps) {
                 {/* Left fade effect */}
                 <div className="absolute left-0 top-0 h-full w-16 md:w-24 z-10 pointer-events-none bg-gradient-to-r from-black to-transparent"></div>
 
-                <Marquee direction={direction} speed={30} gradient={false} pauseOnHover={true} className="py-2">
+                <Marquee direction={currentDirection} speed={30} gradient={false} pauseOnHover={true} className="py-2">
                     {galleryItems.map((item, idx) => (
                         <div key={idx} className="flex-shrink-0 mx-2 md:mx-3">
                             <div className="w-[200px] h-[112px] md:w-[300px] md:h-[169px] bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg overflow-hidden">
@@ -127,6 +131,24 @@ function CategorySection({ category, direction }: CategorySectionProps) {
 
                 {/* Right fade effect */}
                 <div className="absolute right-0 top-0 h-full w-16 md:w-24 z-10 pointer-events-none bg-gradient-to-l from-black to-transparent"></div>
+
+                {/* Direction Control Buttons */}
+                <button
+                    onClick={() => handleDirectionChange("left")}
+                    className={`absolute left-2 top-1/2 transform -translate-y-1/2 z-20 p-1 rounded-full bg-black/50 hover:bg-black/70 transition-colors ${currentDirection === "left" ? "text-lime-400" : "text-white"
+                        }`}
+                    aria-label="Scroll left"
+                >
+                    <ChevronLeft size={20} />
+                </button>
+                <button
+                    onClick={() => handleDirectionChange("right")}
+                    className={`absolute right-2 top-1/2 transform -translate-y-1/2 z-20 p-1 rounded-full bg-black/50 hover:bg-black/70 transition-colors ${currentDirection === "right" ? "text-lime-400" : "text-white"
+                        }`}
+                    aria-label="Scroll right"
+                >
+                    <ChevronRight size={20} />
+                </button>
             </div>
         </section>
     )

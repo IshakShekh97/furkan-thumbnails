@@ -133,10 +133,10 @@ function CategorySection({ category }: CategorySectionProps) {
                             >
                                 <div className="w-full aspect-video bg-gradient-to-r from-gray-700 to-gray-800  overflow-hidden relative">
                                     <Image
-                                        src={urlFor(item.images).width(500).url() || "/placeholder.svg"}
+                                        src={urlFor(item.images).width(800).url() || "/placeholder.svg"}
                                         alt={item.caption}
-                                        width={400}
-                                        height={225}
+                                        width={800}
+                                        height={660}
                                         className="object-cover w-full h-full"
                                     />
                                     <Dialog>
@@ -154,10 +154,10 @@ function CategorySection({ category }: CategorySectionProps) {
                                             </DialogHeader>
 
                                             <Image
-                                                src={urlFor(item.images).width(500).url() || "/placeholder.svg"}
+                                                src={urlFor(item.images).width(1000).url() || "/placeholder.svg"}
                                                 alt={item.caption}
-                                                width={500}
-                                                height={500}
+                                                width={1000}
+                                                height={1000}
                                                 className="object-cover w-full h-full aspect-video"
                                             />
                                         </DialogContent>

@@ -55,7 +55,7 @@ export default function Hero() {
                                     View My Work
                                 </Link>
                             </Button>
-                            <Button size="lg" className="rounded-full border-lime-500 border bg-lime-300/20 text-primary" asChild>
+                            <Button size="lg" className="rounded-full border-lime-500 border bg-lime-400/20 hover:bg-lime-400/30 text-primary transition-all " asChild>
                                 <Link href={'#contact'}>
                                     Contact Me
                                 </Link>

@@ -117,9 +117,6 @@ function CategorySection({ category }: CategorySectionProps) {
             </h2>
 
             <div className="relative w-full px-2 pt-4 ">
-                <div className="absolute h-full w-32 bg-gradient-to-r dark:from-black/75 from-gray-100 to-transparent top-0 left-0 z-10" />
-                <div className="absolute h-full w-32 bg-gradient-to-l dark:from-black/75 from-gray-100 to-transparent top-0 right-0 z-10" />
-
                 <div className="relative overflow-hidden ">
                     {/* Carousel Items */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 md:gap-6">

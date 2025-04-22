@@ -112,7 +112,7 @@ function CategorySection({ category }: CategorySectionProps) {
 
     return (
         <section className="py-6 md:py-8 relative" id="work">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center" style={{ color: "#5cff00" }}>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center dark:text-[#5cff00] text-black ">
                 {category.title}
             </h2>
 

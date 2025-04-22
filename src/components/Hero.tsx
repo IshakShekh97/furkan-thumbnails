@@ -22,7 +22,7 @@ export default function Hero() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.3 }}
-                                className="inline-block px-4 py-1 rounded-full bg-white/10 text-white mb-4"
+                                className="inline-block px-4 py-1 rounded-full bg-primary/50 text-white mb-4"
                             >
                                 Graphic Designer & Thumbnail Artist
                             </motion.div>
@@ -30,15 +30,15 @@ export default function Hero() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="text-4xl md:text-6xl font-semibold leading-tight"
+                                className="text-4xl md:text-6xl font-semibold leading-tight text-primary"
                             >
-                                Creating <span className="text-lime-400">Visual</span> Stories That Capture Attention
+                                Creating <span className="!text-lime-400">Visual</span> Stories That Capture Attention
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.7 }}
-                                className="mt-4 text-lg  max-w-xl text-zinc-400 text-pretty"
+                                className="mt-4 text-lg  max-w-xl text-muted-foreground text-pretty"
                             >
                                 {/* {"Specialized in eye-catching thumbnails and graphics that drive engagement and tell your brand's story."} */}
                                 With 5 years of Photoshop experience, we create high-quality thumbnails, posters, and branding visuals that boost engagement and enhance content
@@ -55,7 +55,7 @@ export default function Hero() {
                                     View My Work
                                 </Link>
                             </Button>
-                            <Button size="lg" className="rounded-full border-lime-500 border bg-lime-300/20 text-white" asChild>
+                            <Button size="lg" className="rounded-full border-lime-500 border bg-lime-300/20 text-primary" asChild>
                                 <Link href={'#contact'}>
                                     Contact Me
                                 </Link>
@@ -68,9 +68,8 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.5 }}
                         className="relative"
                     >
-                        <div className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-2xl border border-primary/20 shadow-lime-400/20 shadow-xl">
+                        <div className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-2xl border border-primary/20 dark:shadow-lime-400/20 shadow-lime-400/60 shadow-xl">
                             <Image
-                                // src="/profile.jpg"
                                 src="/cover.jpg"
                                 alt="Designer Profile"
                                 width={500}

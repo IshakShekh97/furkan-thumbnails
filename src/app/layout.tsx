@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
-import SmoothScroll from "@/components/SmoothScroll";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "300", "800", "900", "100", "200", "300"],
@@ -37,7 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
           enableSystem
         >
-          <div className="relative min-h-screen w-full bg-black">
+          <div className="relative min-h-screen w-full dark:bg-black bg-gray-100">
             <div
               className={cn(
                 "absolute inset-0 opacity-25",
@@ -47,9 +46,7 @@ export default function RootLayout({
             />
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center  [mask-image:radial-gradient(ellipse_at_center,transparent_35%,#00ff00)] bg-[#91db00]/10"></div>
             <div className="relative z-20">
-              <SmoothScroll>
               {children}
-              </SmoothScroll>
             </div>
           </div>
         </ThemeProvider>

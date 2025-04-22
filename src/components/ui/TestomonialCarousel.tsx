@@ -76,7 +76,7 @@ export default function TestimonialCarousel(
                                         draggable={true}
                                         className="h-full w-full rounded-3xl object-cover object-center"
                                     />
-                                    <p className="font-bold absolute bg-gradient-to-t from-black to to-transparent w-full bottom-0 h-40 flex items-end justify-center">
+                                    <p className="font-bold absolute dark:bg-gradient-to-t from-black to to-transparent w-full bottom-0 h-40 flex items-end justify-center">
                                         <span className="pb-10">
                                             {testimonial.name}
                                         </span>

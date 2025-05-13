@@ -9,14 +9,21 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "./ui/button"
 
 type categoryType = {
-    id: string
+    _createdAt: string
+    _updatedAt: string
+    _originalId: string
+    _rev: string
+    _type: "category"
+    _id: string
     title: string
     slug: string
-    gallary: {
-        images: string
+    images: {
+        image: string
         caption: string
     }[]
 }
+
+
 
 export default function ScrollingGallery() {
     const [categoryData, setCategoryData] = useState<categoryType[]>()
@@ -24,16 +31,14 @@ export default function ScrollingGallery() {
 
     useEffect(() => {
         const categoryQuery = `
-            *[_type == 'category']{
-             "id" : _id,
-              title,
-              "slug" : slug.current,
-               "gallary": images[]{
-                 "images" : image.asset._ref,
-                  caption
-               }
-          }
-              `
+                *[_type == 'category']{
+         ...,
+          "images": images[]{
+            "image" : image.asset._ref,
+            caption
+          },
+          "slug" : slug.current,
+          }`
 
         client
             .fetch(categoryQuery)
@@ -64,6 +69,14 @@ export default function ScrollingGallery() {
                 </p>
             </motion.div>
 
+            {
+                !categoryData && !isLoading && (
+                    <div className="flex justify-center items-center py-20">
+                        <p className="text-muted-foreground">No categories available</p>
+                    </div>
+                )
+            }
+
             {isLoading ? (
                 <div className="flex justify-center items-center py-20">
                     <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
@@ -71,7 +84,7 @@ export default function ScrollingGallery() {
             ) : (
                 <>
                     {categoryData?.map((category) => (
-                        <CategorySection key={category.id} category={category} />
+                        <CategorySection key={category._id} category={category} />
                     ))}
                 </>
             )}
@@ -87,9 +100,9 @@ function CategorySection({ category }: CategorySectionProps) {
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const galleryItems =
-        category.gallary.length < 5
-            ? [...category.gallary, ...category.gallary, ...category.gallary].slice(0, 10)
-            : category.gallary
+        category.images.length < 5
+            ? [...category.images, ...category.images, ...category.images].slice(0, 10)
+            : category.images
 
     const totalItems = galleryItems.length
 
@@ -130,8 +143,8 @@ function CategorySection({ category }: CategorySectionProps) {
                             >
                                 <div className="w-full aspect-video bg-gradient-to-r from-gray-700 to-gray-800  overflow-hidden relative">
                                     <Image
-                                        src={urlFor(item.images).width(800).url() || "/placeholder.svg"}
-                                        alt={item.caption}
+                                        src={urlFor(item.image).width(800).url() || "/placeholder.svg"}
+                                        alt={item.caption as string}
                                         width={800}
                                         height={660}
                                         className="object-cover w-full h-full"
@@ -151,8 +164,8 @@ function CategorySection({ category }: CategorySectionProps) {
                                             </DialogHeader>
 
                                             <Image
-                                                src={urlFor(item.images).width(1000).url() || "/placeholder.svg"}
-                                                alt={item.caption}
+                                                src={urlFor(item.image).width(1000).url() || "/placeholder.svg"}
+                                                alt={item.caption as string}
                                                 width={1000}
                                                 height={1000}
                                                 className="object-cover w-full h-full aspect-video"
